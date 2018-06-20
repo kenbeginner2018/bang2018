@@ -62,7 +62,7 @@ public class LoginService extends HttpServlet {
 
 		if(loginUser == null) {
 			//リダイレクト
-			response.sendRedirect("/ShopSystem/");
+			response.sendRedirect("/bang201801/");
 
 
 		}else {
