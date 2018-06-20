@@ -21,16 +21,14 @@ List <GoodsBean>shopList = (List <GoodsBean>)session.getAttribute("shopList");
 </head>
 <body>
 
-<form action="/Test/SerchClass" method="post">
+<form action="/bank201801/Search" method="post">
 <p>検索したい商品名を入力して下さい</p>
-	<input type="radio" name="Disc" value="CD" checked="checked"/> CD
-	<input type="radio" name="Disc" value="DVD"/> DVD/Blu-ray
-<p>
-	<input type="text" name="keyword" value="" />
-	<input type="hidden" name="btn" value="SearchClass" />
-	<input type="submit" value="検索" />
-</p>
-</form>
+		<p>
+			<input type="text" name="keyword" value="" />
+			<input type="hidden" name="btn" value="Search" />
+			<input type="submit" value="検索" />
+		</p>
+	</form>
 <h1>商品一覧</h1>
 <table border="1" summary="検索結果一覧">
 	<tr class="genre2">
@@ -41,9 +39,9 @@ List <GoodsBean>shopList = (List <GoodsBean>)session.getAttribute("shopList");
 		<td class="col5">価格</td>
 		<td class="col6">個数</td>
 	</tr>
+	<form action="shop" method="post">
 	<%for(GoodsBean sList:shopList){%>
 	<tr>
-	<form action="shop" method="post">
 		<td><p><%=sList.getGoodsName() %></p></td>
 		<td><p><%=sList.getCreater() %></p></td>
 		<td><p></p></td>
@@ -69,11 +67,13 @@ List <GoodsBean>shopList = (List <GoodsBean>)session.getAttribute("shopList");
 			<input type="submit" name="btn" value="カートに入れる" />
 			<%--<input type="hidden" name="goodId" value="<%=order.getorderId() " />--%>
 		</td>
-	<%
-		}
-	%>
-	</form>
+
+
 	</tr>
+<%
+		}
+%>
+</form>
 </table>
 </body>
 </html>
