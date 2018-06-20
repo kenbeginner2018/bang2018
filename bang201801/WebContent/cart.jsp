@@ -21,41 +21,44 @@ List <GoodsBean>shopList = (List <GoodsBean>)session.getAttribute("shopList");
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>ショッピングカート</h1>
-	<%
+<h1>ショッピングカート</h1>
+<%
 	ArrayList<GoodsBean> goods = (ArrayList<GoodsBean>)request.getAttribute("goods");
 	for (GoodsBean good:goods){
-	%>
-	<table border="1" summary="カート内容一覧">
-		<tr class="genre2">
-			<td class="col1">商品名</td>
-			<td class="col2">製作者</td>
-			<td class="col3">ジャンル</td>
-			<td class="col4">ディスク形態</td>
-			<td class="col5">価格</td>
-			<td class="col6">個数</td>
-			<td></td>
-		</tr>
-		<tr>
-		<form action="good" method="post">
-			<%for(GoodsBean sList:shopList){%>
-			<td><p><%=cList.getGoodsName() %></p></td>
-			<td><p><%=cList.getCreater() %></p></td>
-			<td><p></p></td>
-			<td><p></p></td>
-			<td><p><%=cList.getPrice()%></p></td>
-			<td>
-				<input type="submit" name="btn" value="削除" />
-			</td>
-		</form>
-		</tr>
-	</table>
+%>
+<table border="1" summary="カート内容一覧">
+	<tr class="genre2">
+		<td class="col1">商品名</td>
+		<td class="col2">製作者</td>
+		<td class="col3">ジャンル</td>
+		<td class="col4">ディスク形態</td>
+		<td class="col5">価格</td>
+		<td class="col6">個数</td>
+		<td></td>
+	</tr>
+	<tr>
 	<form action="good" method="post">
-		<p class="marginLeft">
-			<input type="submit" name="btn" value="購入手続きに進む" />
-			<%--<input type="hidden" name="goodId" value="<%=order.getorderId() " />--%>
-		</p>
-
+	<%--仮にカートに入れた商品データの配列変数を、「cList」にしてます --%>
+	<%for(GoodsBean cList:cartList){%>
+		<td><p><%=cList.getGoodsName() %></p></td>
+		<td><p><%=cList.getCreater() %></p></td>
+		<td></td>
+		<td></td>
+		<td><p><%=cList.getPrice()%></p></td>
+		<td>
+			<input type="submit" name="btn" value="削除" />
+		</td>
+	<%
+		}
+	%>
+	</form>
+	</tr>
+</table>
+	<form action="good" method="post">
+	<p class="marginLeft">
+		<input type="submit" name="btn" value="購入手続きに進む" />
+		<%--<input type="hidden" name="goodId" value="<%=order.getorderId() " />--%>
+	</p>
 	</form>
 	<a href="/main.jsp">TOPに戻りショッピングを続ける</a>
 </body>
