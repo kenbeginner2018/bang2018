@@ -13,10 +13,10 @@ import javax.servlet.http.HttpSession;
 import model.Customer;
 
 /**
- * Servlet implementation class Login
+ * Servlet implementation class LoginService
  */
-@WebServlet("/Login")
-public class Login extends HttpServlet {
+@WebServlet("/login")
+public class LoginService extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 
@@ -71,17 +71,6 @@ public class Login extends HttpServlet {
 			dispatcher.forward(request, response);
 
 
-
 		}
-
-
-
-
-
-
 	}
-
-
-
-
 }
