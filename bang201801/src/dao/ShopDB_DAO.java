@@ -27,8 +27,17 @@ public class ShopDB_DAO {
 			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/shop_database", "root", "root");
 
 			//SELECT文を準備
-			String sql = "SELECT * FROM goods";
-			PreparedStatement pStmt = conn.prepareStatement(sql);
+			String sql1 = "select disc_name, cgenre_name, goods_name from goods join cd on goods.cgenre_id = cd.cgenre_id join disc on goods.disc_id = disc.disc_id;";
+			String sql2 = "select disc_name, cgenre_name, goods_name from goods join cd on goods.cgenre_id = cd.cgenre_id join disc on goods.disc_id = disc.disc_id;";
+
+			if() {
+				String sql = sql1;
+			PreparedStatement pStmt= conn.prepareStatement(sql);
+
+			else if() {
+				String sql = sql2;
+				PreparedStatement pStmt= conn.prepareStatement(sql);
+			}
 
 			//SELECTを実行し、結果表（ResultSetを取得
 
@@ -43,22 +52,23 @@ public class ShopDB_DAO {
 				String creater = rs.getString("goods_creater");
 				int price  = rs.getInt("goods_price");
 				int stock  = rs.getInt("goods_stock");
-				int dvdGenreId  = rs.getInt("goods_dvdGenreId");
-				int cdGenreId  = rs.getInt("goods_cdGenreId");
-				int discId  = rs.getInt("goods_discId");
+				String discName  = rs.getString("disc_name");
+				String cGenreName  = rs.getString("cgenre_name");
+				String dGenreName = rs.getString("dgenre_name");
+
 
 				//結果表に格納されたレコード内容を
 				//Employeeインスタンスに設定し、ArrayList インスタンスに追加
 
 
 				GoodsBean goods = new GoodsBean(goodsId,goodsName, creater, price, stock,
-						 dvdGenreId, cdGenreId,discId);
+						discName, cGenreName, dGenreName);
 				shopList.add(goods);
 
 
 
 			}
-
+			}
 
 
 		}catch (SQLException e) {

@@ -10,22 +10,20 @@ public class GoodsBean implements Serializable{
 	private String creater;
 	private int price;
 	private int stock;
-	private int dvdGenreId;
-	private int cdGenreId;
-	private int discId;
-
-	public GoodsBean() {}
+	private String discName;
+	private String cGenreName;
+	private String dGenreName;
 
 	public GoodsBean(int goodsId,String goodsName, String creater, int price,int stock,
-			int dvdGenreId, int cdGenreId,int discId) {
+			String discName, String cGenreName, String dGenreName) {
 			this.goodsId = goodsId;
 			this.goodsName = goodsName;
 			this.creater = creater;
 			this.price = price;
 			this.stock = stock;
-			this.dvdGenreId = dvdGenreId;
-			this.cdGenreId = cdGenreId;
-			this.discId = discId;
+			this.discName = discName;
+			this.cGenreName = cGenreName;
+			this.dGenreName = dGenreName;
 
 		}
 
@@ -33,26 +31,33 @@ public class GoodsBean implements Serializable{
 		public int getGoodsId() {
 			return goodsId;
 		}
+
 		public String getGoodsName() {
 			return goodsName;
 		}
+
 		public String getCreater() {
 			return creater;
 		}
+
 		public int getPrice() {
 			return price;
 		}
+
 		public int getStock() {
 			return stock;
 		}
-		public int getDvdGenreId() {
-			return dvdGenreId;
+
+		public String getDiscName() {
+			return discName;
 		}
-		public int getCdGenreId() {
-			return cdGenreId;
+
+		public String getcGenreName() {
+			return cGenreName;
 		}
-		public int getDiscId() {
-			return discId;
+
+		public String getdGenreName() {
+			return dGenreName;
 		}
 
 
