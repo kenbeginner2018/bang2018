@@ -5,9 +5,11 @@
 <% request.setCharacterEncoding("UTF-8");
   String getPay = request.getParameter("pay");
   String getTime = request.getParameter("time");
-  String getAddress = request.getParameter("address");
-  String getFreeans = request.getParameter("freeans");
 
+  String getFreeans = request.getParameter("freeans");
+  %>
+
+  <% String getAddress = request.getParameter("address");
   %>
 <%@page import="model.Customer" %>
 <%@page import="model.GoodsBean" %>
@@ -73,7 +75,17 @@ function check(){
 	<tr>
 		<th>住所</th>
 		<td>
-			<%=getAddress %>
+
+		<%if(getAddress!= null&&!getAddress.isEmpty()){%>
+
+<%=getAddress %>
+
+<%}else{ %>
+<font size="5" color="red">住所を入力してください</font>
+
+		<%} %>
+
+
 		</td>
 	</tr>
 	</table>
@@ -101,8 +113,7 @@ function check(){
 		<td><p></p></td>
 		<td><p></p></td>
 		<td><p><%=cList.getPrice()%></p></td>
-		<td>
-		</td>
+
 	</tr>
 	<p hidden>
 		<%= count += cList.getPrice() %>
@@ -117,9 +128,16 @@ function check(){
 
 	<form action="CompleteOrder.jsp" method="post"  onSubmit="return check()">
 
+<%if(getAddress!= null&&!getAddress.isEmpty()){%>
+
+<input type="submit" value=" 購入確定 " />
+
+<%}else{ %>
+<font size="5" color="red">住所を入力してください</font>
+
+		<%} %>
 
 
-	<input type="submit" value=" 購入確定 " />
 
 
 	</form>

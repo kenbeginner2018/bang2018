@@ -2,7 +2,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -11,7 +10,7 @@
 </head>
 <body>
 <h1>支払情報を入力してください</h1>
-	<form action="Check.jsp" method="get">
+	<form action="Check.jsp" method="get" onSubmit="return check()">
 
 <table border="1" summary="配達指定">
 	<tr>
@@ -34,14 +33,15 @@
 	<tr>
 		<th>住所</th>
 		<td>
-			<textarea name="address" rows="4" cols="40">住所を記述してください</textarea>
+			<textarea name="address" rows="4" cols="40"></textarea>
 		</td>
 	</tr>
 
 </table>
 
+<p>自由に意見を記述してください</p>
 <p>
- <textarea name="freeans" rows="4" cols="40"> 自由に意見を記述してください </textarea>
+ <textarea name="freeans" rows="4" cols="40">  </textarea>
 </p>
 
 	<p>
