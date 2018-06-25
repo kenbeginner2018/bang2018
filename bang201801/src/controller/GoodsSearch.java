@@ -3,17 +3,17 @@ package controller;
 
 import javax.servlet.http.HttpServletRequest;
 
-import bean.GoodsBean;
-import dao.ShopDB;
+import dao.ShopDB_DAO;
+import model.GoodsBean;
 
 
 public class GoodsSearch {
 	public void execute(HttpServletRequest request) throws Exception {
-		ShopDB daoShop = null;
+		ShopDB_DAO daoShop = null;
 		String goodsName = request.getParameter("keyword");
 		try {
 			if (goodsName != null && !goodsName.isEmpty()) {
-				daoShop = new ShopDB();
+				daoShop = new ShopDB_DAO();
 				GoodsBean goodsBean = daoShop.getGoodsDataByName(goodsName);
 				if (daoShop != null) {
 					ArrayList<GoodsBean> goodsList = new ArrayList<GoodsBean>();

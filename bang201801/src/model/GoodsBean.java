@@ -1,32 +1,27 @@
 package model;
 
-import java.io.Serializable;
-
-
-public class GoodsBean implements Serializable{
+public class GoodsBean {
 
 	private int goodsId;
 	private String goodsName;
 	private String creater;
 	private int price;
 	private int stock;
-	private int discId;
-	private String discName;
-	private int cGenreId;
-	private String cGenreName;
-	private int dGenreId;
-	private String dGenreName;
+	//private int dvdGenreId;
+	//private int cdGenreId;
+	//private int discId;
 
-	public GoodsBean(int goodsId,String goodsName, String creater, int price,int stock,
-			String discName, String cGenreName, String dGenreName) {
+
+
+	public GoodsBean(int goodsId,String goodsName, String creater, int price,int stock) {
 			this.goodsId = goodsId;
 			this.goodsName = goodsName;
 			this.creater = creater;
 			this.price = price;
 			this.stock = stock;
-			this.discName = discName;
-			this.cGenreName = cGenreName;
-			this.dGenreName = dGenreName;
+			//this.dvdGenreId = dvdGenreId;
+			//this.cdGenreId = cdGenreId;
+			//this.discId = discId;
 
 		}
 
@@ -34,63 +29,31 @@ public class GoodsBean implements Serializable{
 		public int getGoodsId() {
 			return goodsId;
 		}
-
 		public String getGoodsName() {
 			return goodsName;
 		}
-
 		public String getCreater() {
 			return creater;
 		}
-
 		public int getPrice() {
 			return price;
 		}
-
 		public int getStock() {
 			return stock;
 		}
-
-		public String getDiscName() {
-			return discName;
+		/*public int getDvdGenreId() {
+			return dvdGenreId;
 		}
-
-		public int getcGenreId() {
-			return cGenreId;
+		public int getCdGenreId() {
+			return cdGenreId;
 		}
-
-
-		public void setcGenreId(int cGenreId) {
-			this.cGenreId = cGenreId;
-		}
-
-		public String getcGenreName() {
-			return cGenreName;
-		}
-
-		public int getdGenreId() {
-			return dGenreId;
-		}
-		public void setdGenreId(int dGenreId) {
-			this.dGenreId = dGenreId;
-		}
-
-		public String getdGenreName() {
-			return dGenreName;
-		}
-
-
 		public int getDiscId() {
 			return discId;
 		}
-
-
-		public void setDiscId(int discId) {
-			this.discId = discId;
-		}
-
-
+		*/
 
 
 
 }
+
+

@@ -10,7 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import model.Customer;
+import dao.Custemer_DAO;
+import model.AccountBean;
 
 /**
  * Servlet implementation class LoginService
@@ -19,11 +20,6 @@ import model.Customer;
 public class LoginService extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 
 
 	/**
@@ -36,33 +32,38 @@ public class LoginService extends HttpServlet {
 		String pass = request.getParameter("pass");
 		boolean decision ;
 
-		Customer customer = new Customer(id,pass);
+
+
+
+		Custemer_DAO custemerDB = new Custemer_DAO();
+		AccountBean  account =  custemerDB.findAll(id,pass);
+        System.out.println(account);
 
 		//ログイン処理
 
-			if(customer.getPass().equals("1234")) {
+			if(account.getCustomer_passward().equals(pass)) {
 				decision = true;
 			}else {
 				decision = false;
 			}
 
-		HttpSession session = request.getSession();
+
 		//ログイン処理成功時
 		if (decision) {
 			//ユーザー情報をセッションスコープに保存
-
-			session.setAttribute("loginUser",customer );
+			HttpSession session = request.getSession();
+			session.setAttribute("account",account );
 
 
 		}
 
-		Customer loginUser = (Customer)session.getAttribute("loginUser");
+
 
 		//ログイン結果画面にフォワード
 
-		if(loginUser == null) {
+		if(decision == false) {
 			//リダイレクト
-			response.sendRedirect("/bang201801/");
+			response.sendRedirect("/WEB-INF/login.jsp");
 
 
 		}else {

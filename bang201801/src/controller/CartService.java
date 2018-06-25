@@ -2,6 +2,7 @@ package controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-
+import model.GoodsBean;
 
 /**
  * Servlet implementation class CartService
@@ -25,59 +26,51 @@ public class CartService extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-		request.setCaracterEncording("UTF-8");
-
-		HttpSession session = request.getSession(false);
-		ArrayList<String> cart = null;
+		request.setCharacterEncoding("UTF-8");
+		String itemNo = request.getParameter("itemNo");
 
 
-		//商品の合計金額算出→messageに代入
-		if(session != null) {
-			cart = (ArrayList<String>)session.getAttribute("cart");
+
+		HttpSession session = request.getSession();
+		List <GoodsBean>shopList = (List <GoodsBean>)session.getAttribute("shopList");
+		List<GoodsBean>cartList =(List <GoodsBean>)session.getAttribute("cartList");
+		if(cartList==null) {
+			cartList = new ArrayList<>();
+		}
+		if(itemNo != null) {
+		int index = Integer.parseInt(itemNo);
+		cartList.add(shopList.get(index-1));
+
 		}
 
+
+		session.setAttribute("cartList", cartList);
 		String message;
-
-		//カート内に商品がある場合
-		if(cart != null && !cart.isEmpty()) {
-			int total = 0;
-			for(String itemNo : cart) {
-				int index = Integer.paeseInt(ItemNo);
-				total += ******カート内の全商品******;
-			}
-			message = "合計は ￥ " + total + " になります";
-		}else {
-		//カート内が空の場合
-			message = "カートに商品がありません";
-		}
+		message = "カートに" +cartList.size()+ "個の商品が入っています";
 		request.setAttribute("message", message);
 
-		//リクエストディスパッチャーを取得
-		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("***会計画面①****");
-		//指定したJSPへと転送
+		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/cart.jsp");
 		dispatcher.forward(request, response);
 	}
-
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-
-		String paramIndex = request.getParameter("Index");
-		HttpSession session = request.getSession(false);
-		ArrayList<String> cart = null;
-		if(session != null) {
-			cart = (ArrayList<String>)session.getAttribute("cart");
+		String clear = request.getParameter("clear");
+		HttpSession session = request.getSession();
+		System.out.println(clear);
+		if(clear != null){
+			session.removeAttribute("cartList");
+			String message = "カートに商品はありません";
+			request.setAttribute("message", message);
 		}
-
-		if(cart != null && paramIndex != null) {
-			int index Integer.parseInt(paramIndex);
-			cart.remove(index);
-		}
-		doGet(request, response);
+		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/cartEmpty.jsp");
+		dispatcher.forward(request, response);
 	}
 
+
+
 }
+
