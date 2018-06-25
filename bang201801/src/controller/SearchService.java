@@ -62,7 +62,7 @@ public class SearchService extends HttpServlet {
 			if(cartList == null){
 				cartList = new ArrayList<>();
 				session.setAttribute("cartList", cartList);
-
+				
 			}
 
 
