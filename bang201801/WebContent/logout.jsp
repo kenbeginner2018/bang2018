@@ -5,14 +5,15 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>どこつぶ</title>
+<title>ログアウト</title>
 </head>
 <body>
 <h1>ログアウト</h1>
 <p>ログアウトしました</p>
+<hr>
 <p>
 		<form action = "/ShopSystem/Search">
-	    <input type="submit" value="メイン画面へ"></input>
+	    	<input type="submit" value="TOP画面へ"></input>
 		</form>
 </p>
 </body>

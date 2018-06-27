@@ -5,7 +5,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>Insert title here</title>
+<title>ログインミス</title>
+</head>
+<body>
+<h1>IDもしくはパスワードが違います</h1>
+
+<form action = "login.jsp" >
+	    <input type="submit" value="ログイン画面へ"></input>
+</form>
 </head>
 <body>
 

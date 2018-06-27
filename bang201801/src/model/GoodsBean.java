@@ -5,52 +5,69 @@ public class GoodsBean {
 	private int goodsId;
 	private String goodsName;
 	private String creater;
+	private String dGenreName;
+	private String discName;
 	private int price;
-	private int stock;
-	//private int dvdGenreId;
-	//private int cdGenreId;
-	//private int discId;
 
-
-
-	public GoodsBean(int goodsId,String goodsName, String creater, int price,int stock) {
+	public GoodsBean(int goodsId,String goodsName, String creater, String dGenreName,String discName, int price) {
 			this.goodsId = goodsId;
 			this.goodsName = goodsName;
 			this.creater = creater;
+			this.dGenreName = dGenreName;
+			this.discName = discName;
 			this.price = price;
-			this.stock = stock;
-			//this.dvdGenreId = dvdGenreId;
-			//this.cdGenreId = cdGenreId;
-			//this.discId = discId;
 
 		}
 
+	public int getGoodsId() {
+		return goodsId;
+	}
 
-		public int getGoodsId() {
-			return goodsId;
-		}
-		public String getGoodsName() {
-			return goodsName;
-		}
-		public String getCreater() {
-			return creater;
-		}
-		public int getPrice() {
-			return price;
-		}
-		public int getStock() {
-			return stock;
-		}
-		/*public int getDvdGenreId() {
-			return dvdGenreId;
-		}
-		public int getCdGenreId() {
-			return cdGenreId;
-		}
-		public int getDiscId() {
-			return discId;
-		}
-		*/
+
+
+
+
+
+
+	public String getGoodsName() {
+		return goodsName;
+	}
+
+
+
+
+	public String getCreater() {
+		return creater;
+	}
+
+
+
+
+
+	public String getdGenreName() {
+		return dGenreName;
+	}
+
+
+
+	public String getDiscName() {
+		return discName;
+	}
+
+
+
+
+
+	public int getPrice() {
+		return price;
+	}
+
+
+
+
+
+
+
 
 
 

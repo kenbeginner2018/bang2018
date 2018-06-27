@@ -90,7 +90,14 @@ function check(){
 	</tr>
 	</table>
 	<p>
+	コメント：
+	</p>
+
+
+
+	<p>
 		<%=getFreeans %>
+
 	</p>
 
 
@@ -110,9 +117,10 @@ function check(){
 	<tr>
 		<td><p><%=cList.getGoodsName() %></p></td>
 		<td><p><%=cList.getCreater() %></p></td>
-		<td><p></p></td>
-		<td><p></p></td>
+		<td><p><%=cList.getdGenreName() %></p></td>
+		<td><p><%=cList.getDiscName() %></p></td>
 		<td><p><%=cList.getPrice()%></p></td>
+
 
 	</tr>
 	<p hidden>
@@ -142,12 +150,19 @@ function check(){
 
 	</form>
 	<p>
-		<a href="payment.jsp">支払方法入力へ戻る</a></p>
-	<p>
-		<a href="cart.jsp">カートへ戻る</a>
+		<form action = "/ShopSystem/payment.jsp" >
+	    	<input type="submit" value="戻る"></input>
+		</form>
 	</p>
+		<form action = "/ShopSystem/cart" >
+	    	<input type="submit" value="カート確認画面に戻る"></input>
+		</form>
+	</p>
+<hr>
 	<p>
-		<a href="main.jsp">TOPへ戻る</a>
+		<form action = "/ShopSystem/Search">
+	    	<input type="submit" value="TOP画面へ"></input>
+		</form>
 	</p>
 
 </body>

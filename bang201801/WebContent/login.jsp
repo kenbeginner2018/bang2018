@@ -10,12 +10,29 @@
 <title>ログイン</title>
 </head>
 <body>
+
+
+	&nbsp;&nbsp;&nbsp;
+
+
+	<p>
+		※IDとパスワードは、半角で入力してください
+	</p>
 	<form action="login" method="post">
 		ユーザーID：<input type="text" name="id"/><br />
-		パスワード：<input type="password" name="pass"/>
-	<input type="submit" value="ログイン"/>
+		パスワード：<input type="password" name="pass"/><br/>
+		<p>
+			<input type="submit" value="ログイン"/>
+		</p>
 	</form>
-<a href="/WEB-INF/AddAccount.jsp">新規登録</a>
+
+	<a href="/WEB-INF/AddAccount.jsp">新規登録</a>
+<hr>
+	<p>
+		<form action = "/ShopSystem/Search">
+	    	<input type="submit" value="TOP画面へ"></input>
+		</form>
+	</p>
 
 
 </body>

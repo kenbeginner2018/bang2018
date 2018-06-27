@@ -20,8 +20,7 @@ int count = 0;
 <title>購入画面①</title>
 </head>
 <body>
-	<h1>カート内容一覧</h1>
-
+	<h1>購入内容を確定しますか？</h1>
 <table border="1" summary="商品購入一覧">
 
 	<tr class="genre2">
@@ -39,11 +38,9 @@ int count = 0;
 	<tr>
 		<td><p><%=cList.getGoodsName() %></p></td>
 		<td><p><%=cList.getCreater() %></p></td>
-		<td><p></p></td>
-		<td><p></p></td>
+		<td><p><%=cList.getdGenreName() %></p></td>
+		<td><p><%=cList.getDiscName() %></p></td>
 		<td><p><%=cList.getPrice()%></p></td>
-		<td>
-		</td>
 	</tr>
 	<p hidden>
 		<%= count += cList.getPrice() %>
@@ -60,18 +57,19 @@ int count = 0;
 
 	<p>
 		<form action="payment.jsp" method="post">
-		<input type = "submit" value = "支払方法入力へ進む"></input>
+		<input type = "submit" value = "支払手続きへ進む"></input>
 		</form>
 	</p>
 
 	<p>
 		<form action = "/ShopSystem/cart" >
-	    <input type="submit" value="カート画面へ"></input>
+	    <input type="submit" value="カート画面に戻る"></input>
 		</form>
 	</p>
+<hr>
 	<p>
 		<form action = "/ShopSystem/Search">
-	    <input type="submit" value="メイン画面へ"></input>
+	    <input type="submit" value="TOP画面へ"></input>
 		</form>
 	</p>
 

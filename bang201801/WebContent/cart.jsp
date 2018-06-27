@@ -5,9 +5,10 @@
 <%@page import="model.GoodsBean" %>
 <%@page import="java.util.ArrayList" %>
 <%@page import="java.util.List" %>
+<%@page import= "model.AccountBean" %>
 
  <%
-Customer loginUser = (Customer)session.getAttribute("loginUser");
+AccountBean account = (AccountBean)session.getAttribute("account");
 GoodsBean goodsBean = (GoodsBean)session.getAttribute("goodsBean");
 List <GoodsBean>cartList = (List <GoodsBean>)session.getAttribute("cartList");
 int count = 0;
@@ -19,11 +20,11 @@ int count = 0;
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8}" />
-<title>Insert title here</title>
+<title>カート</title>
 </head>
 <body>
 
-	<h1>カート</h1>
+	<h1>カート内容</h1>
 
 	<table border="1" summary="商品購入一覧">
 
@@ -38,15 +39,13 @@ int count = 0;
 
 <%for(GoodsBean cList:cartList){%>
 
-
 	<tr>
 		<td><p><%=cList.getGoodsName() %></p></td>
 		<td><p><%=cList.getCreater() %></p></td>
-		<td><p></p></td>
-		<td><p></p></td>
+		<td><p><%=cList.getdGenreName() %></p></td>
+		<td><p><%=cList.getDiscName() %></p></td>
 		<td><p><%=cList.getPrice()%></p></td>
-		<td>
-		</td>
+
 	</tr>
 	<p hidden>
 		<%= count += cList.getPrice() %>
@@ -64,23 +63,22 @@ int count = 0;
 <p>
 <%=request.getAttribute("message")%>
 </p>
-
-<form action = "/ShopSystem/cart" method = "post">
-			  <input type="hidden" name="clear" value="clear"></input>
- 			  <input type="submit" value="カートを空にする"></input>
-</form>
-
+<p>
+	<form action="/ShopSystem/LoginCheck">
+			<input type="submit" name="btn" value="購入手続きに進む" />
+	</form>
+</p>
+	<form action = "/ShopSystem/cart" method = "post">
+		<input type="hidden" name="clear" value="clear"></input>
+ 		<input type="submit" value="カートを空にする"></input>
+	</form>
+<hr>
+	<div style="display:inline-flex">
 	<p>
 		<form action = "/ShopSystem/Search">
-	    <input type="submit" value="メイン画面へ"></input>
+	    	<input type="submit" value="TOP画面へ"></input>
 		</form>
 	</p>
-
-	<form action="cash.jsp" method="post">
-	<p class="marginLeft">
-		<input type="submit" name="btn" value="購入手続きに進む" />
-
-	</p>
-	</form>
-	</body>
+	</div>
+</body>
 </html>

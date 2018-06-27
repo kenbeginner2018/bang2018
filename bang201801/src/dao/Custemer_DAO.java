@@ -7,9 +7,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import model.AccountBean;
+import model.Customer;
 
 public class Custemer_DAO {
-	public AccountBean findAll(String id,String pass){
+	public AccountBean findAll(Customer customer){
 		Connection conn = null;
 		AccountBean account = null;
 		try {
@@ -24,8 +25,8 @@ public class Custemer_DAO {
 			//SELECT文を準備
 			String sql = "SELECT * FROM customers WHERE customer_id = ? AND customer_passward = ? ";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
-			pStmt.setString(1,"%"+id+"%");
-			pStmt.setString(2,"%"+pass +"%");
+			pStmt.setString(1,customer.getId());
+			pStmt.setString(2,customer.getPass());
 
 
 			//SELECTを実行し、結果表（ResultSetを取得

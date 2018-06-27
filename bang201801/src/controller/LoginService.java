@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import dao.Custemer_DAO;
 import model.AccountBean;
+import model.Customer;
 
 /**
  * Servlet implementation class LoginService
@@ -32,12 +33,16 @@ public class LoginService extends HttpServlet {
 		String pass = request.getParameter("pass");
 		boolean decision ;
 
-
-
+		Customer customer = new Customer(id,pass);
 
 		Custemer_DAO custemerDB = new Custemer_DAO();
-		AccountBean  account =  custemerDB.findAll(id,pass);
-        System.out.println(account);
+		AccountBean  account =  custemerDB.findAll(customer);
+
+		//顧客データがない場合
+		if(account == null ) {
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/loginMiss.jsp");
+			dispatcher.forward(request, response);
+		}
 
 		//ログイン処理
 
@@ -53,9 +58,8 @@ public class LoginService extends HttpServlet {
 			//ユーザー情報をセッションスコープに保存
 			HttpSession session = request.getSession();
 			session.setAttribute("account",account );
-
-
 		}
+
 
 
 
@@ -64,7 +68,6 @@ public class LoginService extends HttpServlet {
 		if(decision == false) {
 			//リダイレクト
 			response.sendRedirect("/WEB-INF/login.jsp");
-
 
 		}else {
 			//フォーワード

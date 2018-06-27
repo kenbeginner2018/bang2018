@@ -6,7 +6,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>Insert title here</title>
+<title>支払い手続き</title>
 </head>
 <body>
 <h1>支払情報を入力してください</h1>
@@ -39,18 +39,30 @@
 
 </table>
 
-<p>自由に意見を記述してください</p>
+<p>ご自由にお書きください（例：不在時の宅配ボックスの利用）</p>
 <p>
- <textarea name="freeans" rows="4" cols="40">  </textarea>
+ <textarea name="freeans" rows="4" cols="40"></textarea>
 </p>
-
+※ご要望に沿えない場合もございます。ご了承ください。
 	<p>
 		<input type="submit" value="送信" />
-		<input type="reset" value="クリア" />
+	</p>
+	<p>
+		<input type="reset" value="入力内容クリア" />
 	</p>
  </form>
 
- <a href="main.jsp">戻る</a>
+ <hr>
+ 	<p>
+		<form action = "/ShopSystem/cart" >
+	    <input type="submit" value="カート画面に戻る"></input>
+		</form>
+	</p>
+	<p>
+		<form action = "/ShopSystem/Search">
+	    <input type="submit" value="TOP画面へ"></input>
+		</form>
+	</p>
 
 </body>
 </html>

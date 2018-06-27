@@ -12,9 +12,11 @@
 
 
 	<p>ご注文ありがとうございました。</p>
-
+<hr>
 	<p>
-		<a href="main.jsp">TOPへ戻る</a>
+		<form action = "/ShopSystem/Search">
+	    <input type="submit" value="TOP画面へ"></input>
+		</form>
 	</p>
 </body>
 </html>

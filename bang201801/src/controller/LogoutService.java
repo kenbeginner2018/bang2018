@@ -1,7 +1,6 @@
 package controller;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,45 +10,52 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import dao.Select_DAO;
-import dao.ShopDB_DAO;
-import model.GoodsBean;
+import model.AccountBean;
+
 /**
- * Servlet implementation class Serch
+ * Servlet implementation class LogoutService
  */
-@WebServlet("/Search")
-public class Search extends HttpServlet {
+@WebServlet("/LogoutService")
+public class LogoutService extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
- 	/**
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public LogoutService() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
+	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("UTF-8");
-		String title = request.getParameter("title");
 		HttpSession session = request.getSession();
+		AccountBean account = (AccountBean)session.getAttribute("account");
 
-		if(title == null) {
-			ShopDB_DAO shopDB = new ShopDB_DAO();
-			List <GoodsBean>  shopList =  shopDB.findAll();
-			session.setAttribute("shopList",shopList );
+		if (account==null) {
+			//ログアウト後にフォワード
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/loginCheck.jsp");
+			dispatcher.forward(request, response);
+
 
 		}else {
+			//セッションスコープに破棄
 
-			Select_DAO select_DAO = new Select_DAO();
-			List <GoodsBean>  shopList = select_DAO.findAll(title);
-			session.setAttribute("shopList",shopList );
+			session.invalidate();
+
+			//ログアウト後にフォワード
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/logout.jsp");
+			dispatcher.forward(request, response);
+
+
 		}
-
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/form");
-		dispatcher.forward(request, response);
-
-
-
-		//カート関連
 
 
 	}
+
+
 
 
 	/**
@@ -57,7 +63,6 @@ public class Search extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-
 		doGet(request, response);
 	}
 

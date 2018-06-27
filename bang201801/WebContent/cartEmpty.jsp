@@ -8,10 +8,13 @@
 <title>カート内削除</title>
 </head>
 <body>
-<h1>カートを空にしました</h1>
+
+
+<h1>カートに商品がありません</h1>
+<hr>
 <p>
-		<form action = "/ShopSystem/form">
-	    <input type="submit" value="メイン画面へ"></input>
+		<form action = "/ShopSystem/Search">
+	    <input type="submit" value="TOP画面へ"></input>
 		</form>
 </p>
 </body>
